@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/buku_model.dart';
+import 'bottom_nav_page.dart';
 
 class bukuDetailPage extends StatelessWidget {
   final bukuModel buku;
@@ -120,7 +121,15 @@ class bukuDetailPage extends StatelessWidget {
                     left: 8,
                     child: IconButton(
                       icon: const Icon(Icons.arrow_back),
-                      onPressed: () => Navigator.pop(context),
+                      onPressed: () {
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const BottomNavPage(),
+                          ),
+                          (route) => false,
+                        );
+                      },
                     ),
                   ),
                   Center(

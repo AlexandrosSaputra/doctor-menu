@@ -114,6 +114,16 @@ class HomePage extends StatelessWidget {
                 title: 'Biografi & Motivasi',
                 onTap: () => _openDetail(context),
               ),
+              CategoryButton(
+                icon: Icons.public_outlined,
+                title: 'Sosial & Budaya',
+                onTap: () => _openDetail(context),
+              ),
+              CategoryButton(
+                icon: Icons.gavel_outlined,
+                title: 'Hukum & Politik',
+                onTap: () => _openDetail(context),
+              ),
 
               const SizedBox(height: 20),
 
