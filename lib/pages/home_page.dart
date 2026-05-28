@@ -65,23 +65,53 @@ class HomePage extends StatelessWidget {
               const SizedBox(height: 24),
 
               CategoryButton(
-                icon: Icons.medical_services_outlined,
+                icon: Icons.auto_stories_outlined,
                 title: 'Fiksi & Novel',
                 onTap: () => _openDetail(context),
               ),
               CategoryButton(
-                icon: Icons.health_and_safety_outlined,
+                icon: Icons.computer_outlined,
                 title: 'Teknologi & IT',
                 onTap: () => _openDetail(context),
               ),
               CategoryButton(
-                icon: Icons.child_care_outlined,
-                title: 'Sains & MAtematika',
+                icon: Icons.science_outlined,
+                title: 'Sains & Matematika',
                 onTap: () => _openDetail(context),
               ),
               CategoryButton(
-                icon: Icons.pets_outlined,
+                icon: Icons.history_edu_outlined,
                 title: 'Sejarah Dunia',
+                onTap: () => _openDetail(context),
+              ),
+              CategoryButton(
+                icon: Icons.business_center_outlined,
+                title: 'Bisnis & Ekonomi',
+                onTap: () => _openDetail(context),
+              ),
+              CategoryButton(
+                icon: Icons.school_outlined,
+                title: 'Pendidikan',
+                onTap: () => _openDetail(context),
+              ),
+              CategoryButton(
+                icon: Icons.health_and_safety_outlined,
+                title: 'Kesehatan',
+                onTap: () => _openDetail(context),
+              ),
+              CategoryButton(
+                icon: Icons.menu_book_outlined,
+                title: 'Agama & Spiritual',
+                onTap: () => _openDetail(context),
+              ),
+              CategoryButton(
+                icon: Icons.palette_outlined,
+                title: 'Seni & Desain',
+                onTap: () => _openDetail(context),
+              ),
+              CategoryButton(
+                icon: Icons.psychology_alt_outlined,
+                title: 'Biografi & Motivasi',
                 onTap: () => _openDetail(context),
               ),
 

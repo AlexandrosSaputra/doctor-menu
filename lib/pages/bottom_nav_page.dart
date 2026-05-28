@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'home_page.dart';
-import 'kategori_page.dart';
+import 'detail_page.dart';
 import 'profil_page.dart';
 
 class BottomNavPage extends StatefulWidget {
@@ -15,7 +15,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
 
   final List<Widget> _pages = const [
     HomePage(),
-    KategoriPage(),
+    DetailPage(),
     ProfilPage(),
   ];
 
@@ -49,7 +49,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.menu_book),
-            label: 'Kategori',
+            label: 'Detail',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
