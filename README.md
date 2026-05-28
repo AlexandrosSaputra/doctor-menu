@@ -1,355 +1,156 @@
-# HealthHub - Aplikasi Janji Temu Dokter
+# RuangBaca
 
-HealthHub adalah aplikasi Flutter sederhana yang menampilkan daftar kategori dokter, detail dokter, jadwal praktik, biografi singkat, rating, serta fitur konfirmasi janji temu. Aplikasi ini dibuat sebagai latihan dasar dalam membangun antarmuka Flutter dengan navigasi antarhalaman dan penggunaan asset gambar.
+RuangBaca adalah aplikasi Flutter sederhana bertema ruang baca digital. Aplikasi ini dibuat sebagai latihan dasar pengembangan antarmuka menggunakan Flutter, dengan fokus pada struktur halaman, penggunaan widget, navigasi antarmuka, serta pengelolaan data buku secara sederhana.
 
-## 1. Tujuan Pembuatan Aplikasi
+## Deskripsi Aplikasi
 
-Aplikasi ini dibuat untuk memahami beberapa konsep dasar Flutter, yaitu:
+Aplikasi RuangBaca menampilkan daftar buku dalam tampilan yang rapi dan mudah digunakan. Pengguna dapat masuk melalui halaman awal, kemudian mengakses beberapa menu utama melalui bottom navigation bar. Menu yang tersedia meliputi Beranda, Kategori, dan Profil.
 
-- Membuat project Flutter baru.
-- Menyusun struktur folder aplikasi.
-- Menggunakan widget dasar seperti `Scaffold`, `Column`, `Row`, `Container`, `Text`, `Image`, dan `ElevatedButton`.
-- Membuat halaman utama dan halaman detail.
-- Menggunakan navigasi dengan `Navigator.push`.
-- Menampilkan gambar dari folder `assets`.
-- Membuat dialog konfirmasi menggunakan `AlertDialog`.
-- Memisahkan kode ke dalam beberapa file agar struktur aplikasi lebih rapi.
+Aplikasi ini menggunakan konsep pemisahan file agar struktur program lebih mudah dipahami dan dikembangkan. Setiap bagian utama aplikasi dipisahkan ke dalam folder `models`, `pages`, dan `widgets`.
 
----
+## Fitur Utama
 
-## 2. Membuat Project Flutter
+1. Halaman awal atau welcome page dengan tombol Masuk.
+2. Halaman Beranda untuk menampilkan daftar buku.
+3. Halaman Kategori untuk menampilkan jenis atau kategori buku.
+4. Halaman Profil untuk menampilkan informasi pengguna atau pembuat aplikasi.
+5. Bottom navigation bar dengan tiga menu utama.
+6. Penggunaan model data buku melalui file `buku_model.dart`.
+7. Penggunaan widget terpisah seperti `buku_card.dart` dan `category_button.dart`.
 
-Langkah pertama adalah membuat project Flutter baru melalui terminal.
-
-```bash
-flutter create belajar1
-```
-
-Setelah project berhasil dibuat, masuk ke folder project:
-
-```bash
-cd belajar1
-```
-
-Kemudian buka project di Visual Studio Code:
-
-```bash
-code .
-```
-
-Pastikan folder yang dibuka di VS Code adalah folder `belajar1`, bukan folder induknya. Folder `belajar1` harus berisi file `pubspec.yaml`.
-
----
-
-## 3. Struktur Folder Aplikasi
-
-Setelah project dibuat, struktur folder di dalam `lib` disusun agar kode lebih mudah dikelola.
-
-Struktur folder yang digunakan adalah sebagai berikut:
+## Struktur Folder
 
 ```text
 lib/
-├── main.dart
 ├── models/
-│   └── doctor_model.dart
+│   └── buku_model.dart
 ├── pages/
+│   ├── welcome_page.dart
 │   ├── home_page.dart
-│   └── doctor_detail_page.dart
-└── widgets/
-    ├── category_button.dart
-    └── doctor_card.dart
+│   ├── bottom_nav_page.dart
+│   ├── kategori_page.dart
+│   ├── profil_page.dart
+│   └── buku_detail_page.dart
+├── widgets/
+│   ├── buku_card.dart
+│   └── category_button.dart
+└── main.dart
 ```
 
-Selain itu, dibuat juga folder untuk menyimpan gambar:
+## Penjelasan Struktur Program
+
+### 1. `main.dart`
+
+File `main.dart` berfungsi sebagai titik awal aplikasi. Di dalam file ini terdapat konfigurasi utama aplikasi seperti nama aplikasi, tema, warna dasar, dan halaman pertama yang ditampilkan.
+
+Aplikasi pertama kali diarahkan ke `WelcomePage`, sehingga pengguna akan melihat halaman pembuka sebelum masuk ke halaman utama.
+
+### 2. `welcome_page.dart`
+
+File ini berisi halaman pembuka aplikasi. Pada halaman ini terdapat tampilan sambutan dan tombol Masuk. Ketika tombol Masuk ditekan, pengguna akan diarahkan ke halaman utama yang sudah memiliki bottom navigation bar.
+
+### 3. `bottom_nav_page.dart`
+
+File ini digunakan untuk mengatur navigasi bawah aplikasi. Bottom navigation bar memiliki tiga menu, yaitu:
+
+* Beranda
+* Kategori
+* Profil
+
+Setiap menu akan menampilkan halaman yang berbeda tanpa harus keluar dari aplikasi.
+
+### 4. `home_page.dart`
+
+File ini berisi halaman utama aplikasi. Halaman ini digunakan untuk menampilkan daftar buku atau konten utama dari aplikasi RuangBaca.
+
+### 5. `kategori_page.dart`
+
+File ini berisi halaman kategori buku. Halaman ini dapat digunakan untuk menampilkan daftar genre atau jenis buku, seperti novel, pendidikan, teknologi, sejarah, dan kategori lainnya.
+
+### 6. `profil_page.dart`
+
+File ini berisi halaman profil. Halaman ini dapat digunakan untuk menampilkan informasi pengguna, identitas pembuat aplikasi, atau deskripsi singkat mengenai aplikasi.
+
+### 7. `buku_model.dart`
+
+File ini digunakan untuk membuat struktur data buku. Data seperti judul buku, penulis, gambar, kategori, dan deskripsi dapat dikelola melalui model ini.
+
+### 8. `buku_card.dart`
+
+File ini berisi widget kartu buku. Widget ini digunakan untuk menampilkan informasi buku dalam bentuk tampilan kartu agar lebih rapi dan mudah digunakan kembali.
+
+### 9. `category_button.dart`
+
+File ini berisi widget tombol kategori. Widget ini digunakan untuk menampilkan pilihan kategori buku dengan bentuk yang lebih terstruktur.
+
+## Alur Aplikasi
+
+Alur kerja aplikasi RuangBaca adalah sebagai berikut:
 
 ```text
-assets/
-└── images/
-    ├── doctor.png
-    └── doctor_banner.jpg
+main.dart
+   ↓
+WelcomePage
+   ↓
+Tombol Masuk
+   ↓
+BottomNavPage
+   ↓
+Beranda / Kategori / Profil
 ```
 
----
+Saat aplikasi dijalankan, sistem akan menampilkan halaman `WelcomePage`. Setelah pengguna menekan tombol Masuk, aplikasi akan berpindah ke `BottomNavPage`. Pada halaman tersebut, pengguna dapat memilih menu Beranda, Kategori, atau Profil melalui bottom navigation bar.
 
-## 4. Menyiapkan Asset Gambar
+## Teknologi yang Digunakan
 
-Aplikasi ini menggunakan dua gambar utama, yaitu:
+* Flutter
+* Dart
+* Material Design
 
-| Nama File | Fungsi | Ukuran Disarankan |
-|---|---|---|
-| `doctor_banner.jpg` | Banner pada halaman utama | 1200 x 600 px |
-| `doctor.png` | Gambar dokter pada halaman detail | 512 x 512 px |
+## Cara Menjalankan Aplikasi
 
-File gambar diletakkan di dalam folder:
+Pastikan Flutter sudah terpasang pada perangkat. Setelah itu, jalankan perintah berikut melalui terminal:
+
+```bash
+flutter pub get
+flutter run
+```
+
+Jika menggunakan emulator atau perangkat tertentu, jalankan perintah:
+
+```bash
+flutter devices
+flutter run -d nama_device
+```
+
+## Catatan Aset Gambar
+
+Jika aplikasi menggunakan gambar lokal, pastikan file gambar sudah berada di folder aset, misalnya:
 
 ```text
 assets/images/
 ```
 
-Contoh lokasi file:
-
-```text
-assets/images/doctor.png
-assets/images/doctor_banner.jpg
-```
-
----
-
-## 5. Mendaftarkan Asset di `pubspec.yaml`
-
-Agar gambar dapat digunakan di Flutter, folder asset harus didaftarkan pada file `pubspec.yaml`.
-
-Tambahkan bagian berikut:
+Kemudian daftarkan aset tersebut pada file `pubspec.yaml`:
 
 ```yaml
 flutter:
-  uses-material-design: true
-
   assets:
     - assets/images/
 ```
 
-Setelah itu jalankan perintah:
+Setelah menambahkan aset, jalankan kembali:
 
 ```bash
 flutter pub get
 ```
 
-Perintah ini digunakan agar Flutter membaca asset yang sudah didaftarkan.
+## Tujuan Pembuatan
 
----
+Aplikasi ini dibuat sebagai latihan untuk memahami dasar-dasar Flutter, khususnya dalam membuat tampilan antarmuka, menyusun struktur folder, menggunakan widget, mengatur navigasi halaman, serta menampilkan data buku secara sederhana.
 
-## 6. Membuat Model Data Dokter
+## Pengembang
 
-File pertama yang dibuat adalah:
-
-```text
-lib/models/doctor_model.dart
-```
-
-File ini digunakan untuk menyimpan struktur data dokter, seperti nama dokter, spesialis, jadwal praktik, biografi, rating, dan path gambar.
-
-Model ini membantu agar data dokter lebih rapi dan mudah digunakan di beberapa halaman.
-
-Contoh data yang digunakan pada aplikasi:
-
-```dart
-DoctorModel(
-  name: 'dr. Ahmad Hidayat',
-  specialist: 'Dokter Anak',
-  schedule: 'Mon - Fri, 9.00 AM - 5.00 PM',
-  biography: 'Dokter spesialis anak dengan pengalaman lebih dari 10 tahun di bidang klinis dan pelayanan kesehatan anak.',
-  rating: 4.5,
-  imagePath: 'assets/images/doctor.png',
-);
-```
-
----
-
-## 7. Membuat Widget Tombol Kategori
-
-File berikutnya adalah:
-
-```text
-lib/widgets/category_button.dart
-```
-
-Widget ini digunakan untuk membuat tombol kategori dokter pada halaman utama.
-
-Kategori yang ditampilkan adalah:
-
-- Dokter Umum
-- Dokter Gigi
-- Dokter Anak
-- Dokter Hewan
-
-Setiap tombol kategori memiliki ikon, teks, dan aksi ketika ditekan. Ketika pengguna memilih kategori, aplikasi akan diarahkan ke halaman detail dokter.
-
----
-
-## 8. Membuat Widget Kartu Dokter
-
-File berikutnya adalah:
-
-```text
-lib/widgets/doctor_card.dart
-```
-
-Widget ini digunakan untuk menampilkan ringkasan informasi dokter dalam bentuk kartu.
-
-Informasi yang ditampilkan pada kartu dokter meliputi:
-
-- Foto dokter
-- Nama dokter
-- Spesialis dokter
-- Rating dokter
-- Ikon navigasi ke halaman detail
-
-Dengan membuat widget terpisah, tampilan kartu dokter dapat digunakan kembali jika nantinya aplikasi memiliki banyak data dokter.
-
----
-
-## 9. Membuat Halaman Utama
-
-Halaman utama dibuat pada file:
-
-```text
-lib/pages/home_page.dart
-```
-
-Halaman ini berfungsi sebagai tampilan awal aplikasi.
-
-Komponen yang terdapat pada halaman utama adalah:
-
-1. Banner aplikasi HealthHub.
-2. Daftar kategori dokter.
-3. Kartu rekomendasi dokter.
-4. Navigasi menuju halaman detail dokter.
-
-Pada halaman ini, pengguna dapat memilih kategori dokter atau menekan kartu dokter untuk melihat informasi lebih lengkap.
-
----
-
-## 10. Membuat Halaman Detail Dokter
-
-Halaman detail dokter dibuat pada file:
-
-```text
-lib/pages/doctor_detail_page.dart
-```
-
-Halaman ini menampilkan informasi dokter secara lebih lengkap.
-
-Informasi yang ditampilkan adalah:
-
-- Gambar dokter
-- Nama dokter
-- Spesialis dokter
-- Jadwal praktik
-- Biografi singkat
-- Rating dokter
-- Tombol `Buat Janji Temu`
-
-Ketika tombol `Buat Janji Temu` ditekan, aplikasi akan menampilkan dialog konfirmasi.
-
----
-
-## 11. Membuat Dialog Konfirmasi Janji Temu
-
-Dialog konfirmasi dibuat menggunakan widget `AlertDialog`.
-
-Dialog ini muncul ketika pengguna menekan tombol:
-
-```text
-Buat Janji Temu
-```
-
-Isi dialog menanyakan apakah pengguna ingin menjadwalkan konsultasi dengan dokter yang dipilih.
-
-Pilihan yang tersedia adalah:
-
-- `Tidak` untuk membatalkan.
-- `Ya` untuk menyetujui janji temu.
-
-Jika pengguna memilih `Ya`, aplikasi akan menampilkan pesan bahwa janji temu berhasil dibuat.
-
----
-
-## 12. Mengatur File `main.dart`
-
-File `main.dart` digunakan sebagai titik awal aplikasi.
-
-Pada file ini, aplikasi menjalankan class utama `HealthHubApp` dan menampilkan `HomePage` sebagai halaman pertama.
-
-Selain itu, pada file ini juga diatur beberapa konfigurasi dasar, seperti:
-
-- Judul aplikasi.
-- Menghilangkan tulisan debug banner.
-- Mengatur tema warna aplikasi.
-- Menentukan halaman awal.
-
----
-
-## 13. Alur Kerja Aplikasi
-
-Alur kerja aplikasi HealthHub adalah sebagai berikut:
-
-```text
-main.dart
-   ↓
-HealthHubApp
-   ↓
-HomePage
-   ↓
-Pengguna memilih kategori dokter atau kartu dokter
-   ↓
-DoctorDetailPage
-   ↓
-Pengguna melihat detail dokter
-   ↓
-Pengguna menekan tombol Buat Janji Temu
-   ↓
-Muncul dialog konfirmasi
-   ↓
-Pengguna memilih Ya atau Tidak
-```
-
-Dengan alur tersebut, aplikasi memiliki proses yang sederhana dan mudah dipahami.
-
----
-
-## 14. Menjalankan Aplikasi
-
-Setelah semua file dibuat, jalankan perintah berikut:
-
-```bash
-flutter pub get
-flutter run
-```
-
-Jika menggunakan emulator Android, pastikan emulator sudah aktif sebelum menjalankan aplikasi.
-
----
-
-## 15. Kendala yang Mungkin Terjadi
-
-### Asset Gambar Tidak Terbaca
-
-Jika muncul error seperti:
-
-```text
-Unable to load asset
-```
-
-maka periksa kembali beberapa hal berikut:
-
-1. Pastikan file gambar benar-benar ada di folder `assets/images/`.
-2. Pastikan nama file di kode sama dengan nama file asli.
-3. Pastikan asset sudah didaftarkan di `pubspec.yaml`.
-4. Jalankan ulang perintah:
-
-```bash
-flutter clean
-flutter pub get
-flutter run
-```
-
-Contoh path yang benar:
-
-```dart
-AssetImage('assets/images/doctor_banner.jpg')
-```
-
-dan:
-
-```dart
-Image.asset('assets/images/doctor.png')
-```
-
----
-
-## 16. Kesimpulan
-
-Aplikasi HealthHub dibuat dengan konsep sederhana untuk menampilkan layanan janji temu dokter. Pembuatan aplikasi dimulai dari membuat project Flutter, menyiapkan struktur folder, menambahkan asset gambar, membuat model data dokter, membuat widget pendukung, membuat halaman utama, membuat halaman detail dokter, hingga menampilkan dialog konfirmasi janji temu.
-
-Melalui aplikasi ini, beberapa dasar Flutter dapat dipelajari, terutama penggunaan widget, navigasi halaman, pemisahan file, pengelolaan asset, dan pembuatan tampilan antarmuka sederhana.
+Nama: Alexandros Saputra
+NIM: 1462300235
+Aplikasi: RuangBaca
