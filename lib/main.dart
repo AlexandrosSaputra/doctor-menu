@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'pages/home_page.dart';
+import 'pages/welcome_page.dart';
 
 void main() {
-  runApp(const HealthHubApp());
+  runApp(const RuangBacaApp());
 }
 
-class HealthHubApp extends StatelessWidget {
-  const HealthHubApp({super.key});
+class RuangBacaApp extends StatelessWidget {
+  const RuangBacaApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'HealthHub',
+      title: 'RuangBaca',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Roboto',
@@ -19,8 +19,9 @@ class HealthHubApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color(0xFF1976D2),
         ),
+        useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: const WelcomePage(),
     );
   }
 }

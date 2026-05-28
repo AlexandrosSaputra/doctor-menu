@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import '../models/doctor_model.dart';
+import '../models/buku_model.dart';
 
-class DoctorCard extends StatelessWidget {
-  final DoctorModel doctor;
+class bukuCard extends StatelessWidget {
+  final bukuModel buku;
   final VoidCallback onTap;
 
-  const DoctorCard({
+  const bukuCard({
     super.key,
-    required this.doctor,
+    required this.buku,
     required this.onTap,
   });
 
@@ -27,7 +27,7 @@ class DoctorCard extends StatelessWidget {
               CircleAvatar(
                 radius: 34,
                 backgroundColor: const Color(0xFFE3F2FD),
-                backgroundImage: AssetImage(doctor.imagePath),
+                backgroundImage: AssetImage(buku.imagePath),
               ),
               const SizedBox(width: 14),
               Expanded(
@@ -35,14 +35,14 @@ class DoctorCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      doctor.name,
+                      buku.name,
                       style: const TextStyle(
                         fontSize: 17,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      doctor.specialist,
+                      buku.penulis,
                       style: const TextStyle(
                         fontSize: 14,
                         color: Colors.grey,
@@ -58,7 +58,7 @@ class DoctorCard extends StatelessWidget {
                         ),
                         const SizedBox(width: 4),
                         Text(
-                          doctor.rating.toString(),
+                          buku.rating.toString(),
                           style: const TextStyle(
                             fontWeight: FontWeight.w600,
                           ),

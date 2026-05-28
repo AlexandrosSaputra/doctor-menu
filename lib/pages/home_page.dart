@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
-import '../models/doctor_model.dart';
+import '../models/buku_model.dart';
 import '../widgets/category_button.dart';
-import '../widgets/doctor_card.dart';
-import 'doctor_detail_page.dart';
+import '../widgets/buku_card.dart';
+import 'buku_detail_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  final DoctorModel doctor = const DoctorModel(
-    name: 'dr. Ahmad Hidayat',
-    specialist: 'Dokter Anak',
-    schedule: 'Mon - Fri, 9.00 AM - 5.00 PM',
+  final bukuModel buku = const bukuModel(
+    name: 'Hujan',
+    penulis: 'Tere Liye',
+    deskripsi: 'Novel fiksi ilmiah bertema penaklukan cinta,\n'
+    'dan melibatkan bencana masa depan setelah bencana besar.',
     biography:
-        'Dokter spesialis anak dengan pengalaman lebih dari 10 tahun di bidang klinis dan pelayanan kesehatan anak.',
+        'Klik pinjam buku.',
     rating: 4.5,
-    imagePath: 'assets/images/doctor.png',
+    imagePath: 'assets/images/buku.png',
   );
 
   void _openDetail(BuildContext context) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => DoctorDetailPage(doctor: doctor),
+        builder: (_) => bukuDetailPage(buku: buku),
       ),
     );
   }
@@ -42,7 +43,7 @@ class HomePage extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   image: const DecorationImage(
-                    image: AssetImage('assets/images/doctor_banner.jpg'),
+                    image: AssetImage('assets/images/banner.jpg'),
                     fit: BoxFit.cover,
                     opacity: 0.75,
                   ),
@@ -50,7 +51,7 @@ class HomePage extends StatelessWidget {
                 child: const Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'HealthHub:\nYour Health Companion',
+                    'Ruang Baca Digital:\nPinjam dan Baca Buku secara gratis',
                     style: TextStyle(
                       fontSize: 23,
                       height: 1.3,
@@ -65,29 +66,29 @@ class HomePage extends StatelessWidget {
 
               CategoryButton(
                 icon: Icons.medical_services_outlined,
-                title: 'Dokter Umum',
+                title: 'Fiksi & Novel',
                 onTap: () => _openDetail(context),
               ),
               CategoryButton(
                 icon: Icons.health_and_safety_outlined,
-                title: 'Dokter Gigi',
+                title: 'Teknologi & IT',
                 onTap: () => _openDetail(context),
               ),
               CategoryButton(
                 icon: Icons.child_care_outlined,
-                title: 'Dokter Anak',
+                title: 'Sains & MAtematika',
                 onTap: () => _openDetail(context),
               ),
               CategoryButton(
                 icon: Icons.pets_outlined,
-                title: 'Dokter Hewan',
+                title: 'Sejarah Dunia',
                 onTap: () => _openDetail(context),
               ),
 
               const SizedBox(height: 20),
 
               const Text(
-                'Rekomendasi Dokter',
+                'Rekomendasi Buku',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -96,8 +97,8 @@ class HomePage extends StatelessWidget {
 
               const SizedBox(height: 12),
 
-              DoctorCard(
-                doctor: doctor,
+              bukuCard(
+                buku: buku,
                 onTap: () => _openDetail(context),
               ),
             ],

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../models/doctor_model.dart';
+import '../models/buku_model.dart';
 
-class DoctorDetailPage extends StatelessWidget {
-  final DoctorModel doctor;
+class bukuDetailPage extends StatelessWidget {
+  final bukuModel buku;
 
-  const DoctorDetailPage({
+  const bukuDetailPage({
     super.key,
-    required this.doctor,
+    required this.buku,
   });
 
   void _showConfirmationDialog(BuildContext context) {
@@ -26,7 +26,7 @@ class DoctorDetailPage extends StatelessWidget {
               ),
               SizedBox(height: 10),
               Text(
-                'Konfirmasi Janji Temu',
+                'Konfirmasi Pinjam',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
@@ -35,14 +35,14 @@ class DoctorDetailPage extends StatelessWidget {
             ],
           ),
           content: Text(
-            'Ingin menjadwalkan konsultasi dengan ${doctor.name}?',
+            'Apakah Anda yakin ingin meminjam buku ${buku.name}?\nBatas waktu: 7 Hari',
             textAlign: TextAlign.center,
           ),
           actionsAlignment: MainAxisAlignment.center,
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('Tidak'),
+              child: const Text('Batal'),
             ),
             ElevatedButton(
               onPressed: () {
@@ -51,7 +51,7 @@ class DoctorDetailPage extends StatelessWidget {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(
-                      'Janji temu dengan ${doctor.name} berhasil dibuat.',
+                      'Buku ${buku.name} berhasil dipinjam.',
                     ),
                     backgroundColor: const Color(0xFF1976D2),
                   ),
@@ -61,7 +61,7 @@ class DoctorDetailPage extends StatelessWidget {
                 backgroundColor: const Color(0xFF1976D2),
                 foregroundColor: Colors.white,
               ),
-              child: const Text('Ya'),
+              child: const Text('Ok'),
             ),
           ],
         );
@@ -87,7 +87,7 @@ class DoctorDetailPage extends StatelessWidget {
         ),
         const SizedBox(width: 8),
         Text(
-          doctor.rating.toString(),
+          buku.rating.toString(),
           style: const TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.w600,
@@ -125,7 +125,7 @@ class DoctorDetailPage extends StatelessWidget {
                   ),
                   Center(
                     child: Image.asset(
-                      doctor.imagePath,
+                      buku.imagePath,
                       height: 190,
                       fit: BoxFit.contain,
                     ),
@@ -148,7 +148,7 @@ class DoctorDetailPage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                doctor.name,
+                                buku.name,
                                 style: const TextStyle(
                                   fontSize: 23,
                                   fontWeight: FontWeight.bold,
@@ -156,7 +156,7 @@ class DoctorDetailPage extends StatelessWidget {
                               ),
                               const SizedBox(height: 4),
                               Text(
-                                doctor.specialist,
+                                buku.penulis,
                                 style: const TextStyle(
                                   fontSize: 16,
                                   color: Colors.grey,
@@ -176,41 +176,11 @@ class DoctorDetailPage extends StatelessWidget {
                       ],
                     ),
 
-                    const SizedBox(height: 22),
-
-                    const Text(
-                      'JADWAL PRAKTIK',
-                      style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 0.5,
-                      ),
-                    ),
                     const SizedBox(height: 6),
                     Text(
-                      doctor.schedule,
+                      buku.deskripsi,
                       style: const TextStyle(
                         fontSize: 15,
-                        color: Color(0xFF37474F),
-                      ),
-                    ),
-
-                    const SizedBox(height: 22),
-
-                    const Text(
-                      'BIOGRAFI SINGKAT',
-                      style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 0.5,
-                      ),
-                    ),
-                    const SizedBox(height: 6),
-                    Text(
-                      doctor.biography,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        height: 1.5,
                         color: Color(0xFF37474F),
                       ),
                     ),
@@ -234,7 +204,7 @@ class DoctorDetailPage extends StatelessWidget {
                           ),
                         ),
                         child: const Text(
-                          'Buat Janji Temu',
+                          'Pinjam Buku',
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,

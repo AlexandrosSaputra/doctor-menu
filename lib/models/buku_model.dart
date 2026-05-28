@@ -1,15 +1,15 @@
-class DoctorModel {
+class bukuModel {
   final String name;
-  final String specialist;
-  final String schedule;
+  final String penulis;
+  final String deskripsi;
   final String biography;
   final double rating;
   final String imagePath;
 
-  const DoctorModel({
+  const bukuModel({
     required this.name,
-    required this.specialist,
-    required this.schedule,
+    required this.penulis,
+    required this.deskripsi,
     required this.biography,
     required this.rating,
     required this.imagePath,
