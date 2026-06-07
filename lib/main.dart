@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'pages/welcome_page.dart';
+import 'pages/splash_page.dart';
 
 void main() {
   runApp(const RuangBacaApp());
@@ -21,7 +21,7 @@ class RuangBacaApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const WelcomePage(),
+      home: const SplashPage(),
     );
   }
 }
